@@ -1,10 +1,12 @@
-package com.davidev.whatsappx;
+package com.davidev.whatsappx.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.davidev.whatsappx.R;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -14,8 +16,6 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
     }
-
-
 
     //Abre a activity de cadastro
     public void abrirTelaCadastro(View view) {
