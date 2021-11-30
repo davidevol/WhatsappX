@@ -8,4 +8,6 @@
     <string name="texto_login">Não tem uma conta? Fazer uma</string>
     <string name="botão_entrar">Entrar</string>
     <string name="descricao_cadastro">Homem acenando</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

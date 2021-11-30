@@ -53,4 +53,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage:11.8.0'
     //noinspection GradleDependency
     implementation 'com.google.firebase:firebase-auth:11.8.0'
+
+    //Dependencias para abas
+    //noinspection GradleDependency
+    implementation 'com.ogaclejapan.smarttablayout:library:1.6.1@aar'
+    //noinspection GradleDependency
+    implementation 'com.ogaclejapan.smarttablayout:utils-v4:1.6.1@aar'
 }
