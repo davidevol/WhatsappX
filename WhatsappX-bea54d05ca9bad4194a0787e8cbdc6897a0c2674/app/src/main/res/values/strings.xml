@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">WhatsappX</string>
+    <string name="digite_email">Digite seu email</string>
+    <string name="digite_nome">Digite seu nome</string>
+    <string name="digite_senha">Digite sua senha</string>
+    <string name="botao_cadastro">Cadastrar</string>
+    <string name="descricao_conteudo">Whatsappx Logo</string>
+    <string name="texto_login">Não tem uma conta? Fazer uma</string>
+    <string name="botão_entrar">Entrar</string>
+    <string name="descricao_cadastro">Homem acenando</string>
+</resources>
