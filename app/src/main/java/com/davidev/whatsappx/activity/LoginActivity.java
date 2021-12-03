@@ -35,10 +35,8 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    //Loga o usuario ou exibe o motivo da falha
     public void logarUsuario(Usuario usuario){
-
-
-        //Loga o usuario
         autenticacao.signInWithEmailAndPassword(
                 usuario.getEmail(), usuario.getSenha()
         ).addOnCompleteListener(task -> {

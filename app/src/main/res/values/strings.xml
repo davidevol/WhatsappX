@@ -10,4 +10,8 @@
     <string name="descricao_cadastro">Homem acenando</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menu_pesquisar">Pesquisar</string>
+    <string name="menu_configuracoes">Configurações</string>
+    <string name="menu_sair">Sair</string>
+    <string name="cadastro_bemvindo">Bem vindo(a)!</string>
 </resources>
