@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".activity.CadastroActivity">
 
-    <TextView android:id="@+id/textView2"
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="411dp"
         android:layout_height="wrap_content"
         android:text="@string/cadastro_bemvindo"
@@ -32,7 +33,8 @@
         app:layout_constraintVertical_chainStyle="packed"
         app:srcCompat="@drawable/ic_baseline_emoji_people_24" />
 
-    <Button android:id="@+id/button2"
+    <Button
+        android:id="@+id/button2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -44,7 +46,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout5" />
 
-    <com.google.android.material.textfield.TextInputLayout android:id="@+id/textInputLayout3"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -55,13 +58,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2">
 
-        <com.google.android.material.textfield.TextInputEditText android:id="@+id/editNome"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editNome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/digite_nome"
             android:textSize="20sp" />
     </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout android:id="@+id/textInputLayout4"
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout4"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -72,7 +78,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
 
-        <com.google.android.material.textfield.TextInputEditText android:id="@+id/editLoginEmail"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editLoginEmail"
             style="@style/Widget.AppCompat.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -80,7 +87,9 @@
             android:inputType="textEmailAddress"
             android:textSize="20sp" />
     </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout android:id="@+id/textInputLayout5"
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout5"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -91,10 +100,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
 
-        <com.google.android.material.textfield.TextInputEditText android:id="@+id/editLoginSenha"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editLoginSenha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/digite_senha"
             android:inputType="textPassword"
             android:textSize="20sp" />
-    </com.google.android.material.textfield.TextInputLayout></androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.textfield.TextInputLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
