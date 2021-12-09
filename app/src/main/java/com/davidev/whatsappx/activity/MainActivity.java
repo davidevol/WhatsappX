@@ -1,5 +1,6 @@
 package com.davidev.whatsappx.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -68,26 +69,38 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    //Acessa o item Sair do menu e desloga usuario
+    //Acesso ao menu
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
+        /*
+        //Para testar itens unicos
         if (item.getItemId() == R.id.menuSair) {
             deslogarUsuario();
             finish();
         }
 
-        /*
-        Anotado com possibilidade de usos futuros
+         */
+
+
         switch ( item.getItemId() ){
             case R.id.menuSair:
                 deslogarUsuario();
                 finish();
                 break;
+            case R.id.menuConfiguracoes:
+                abrirConfiguracoes();
+                finish();
+                break;
         }
-         */
+
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void abrirConfiguracoes(){
+        Intent intent = new Intent (MainActivity.this, ConfiguracoesActivity.class);
+        startActivity( intent );
     }
 
     //Tenta deslogar o usuario atual

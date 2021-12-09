@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WhatsappX">
         <activity
+            android:name=".activity.ConfiguracoesActivity"
+            android:parentActivityName=".activity.MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.LoginActivity"
             android:exported="true">
             <intent-filter>
