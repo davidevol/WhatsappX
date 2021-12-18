@@ -30,8 +30,8 @@ public class LoginActivity extends AppCompatActivity {
 
         autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
 
-        campoEmail = findViewById(R.id.editLoginEmail);
-        campoSenha = findViewById(R.id.editLoginSenha);
+        campoEmail = findViewById(R.id.editEmail);
+        campoSenha = findViewById(R.id.editSenha);
 
     }
 

@@ -3,9 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/deeh/StudioProjects/WhatsappX/app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.403125" />
         <entry key="..\:/Users/deeh/StudioProjects/WhatsappX/app/src/main/res/drawable/ic_baseline_emoji_people_24.xml" value="0.403125" />
-        <entry key="..\:/Users/deeh/StudioProjects/WhatsappX/app/src/main/res/layout/activity_cadastro.xml" value="0.38697916666666665" />
-        <entry key="..\:/Users/deeh/StudioProjects/WhatsappX/app/src/main/res/layout/activity_configuracoes.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/deeh/StudioProjects/WhatsappX/app/src/main/res/layout/activity_cadastro.xml" value="0.275" />
+        <entry key="..\:/Users/deeh/StudioProjects/WhatsappX/app/src/main/res/layout/activity_configuracoes.xml" value="0.21067415730337077" />
         <entry key="..\:/Users/deeh/StudioProjects/WhatsappX/app/src/main/res/layout/activity_login.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/deeh/StudioProjects/WhatsappX/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/deeh/StudioProjects/WhatsappX/app/src/main/res/layout/fragment_contatos.xml" value="0.38697916666666665" />
