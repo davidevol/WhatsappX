@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         // Obtem a instância do Firebase.
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
+        // Obtem a instância do FirebaseAutenticacao
         autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
 
         Toolbar toolbar = findViewById(R.id.toolbarPrincipal);
@@ -72,16 +73,6 @@ public class MainActivity extends AppCompatActivity {
     //Acesso ao menu
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        /*
-        //Para testar itens unicos
-        if (item.getItemId() == R.id.menuSair) {
-            deslogarUsuario();
-            finish();
-        }
-
-         */
-
 
         switch ( item.getItemId() ){
             case R.id.menuSair:

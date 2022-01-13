@@ -15,13 +15,12 @@ public class Usuario {
     public Usuario() {
     }
 
-    public void salvar(){
+    // Com os emails obtidos do cadastro, são codificados em base64 e adiciona ao diretório chamado: usuarios
+    public void salvar() {
+            DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebaseDatabase();
+            DatabaseReference usuario = firebaseRef.child("usuarios").child( getId() );
 
-        DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebaseDatabase();
-        DatabaseReference usuario = firebaseRef.child("usuarios").child( getId() );
-
-        usuario.setValue( this );
-
+            usuario.setValue( this );
     }
 
     @Exclude
@@ -29,7 +28,9 @@ public class Usuario {
         return id;
     }
 
-    public void setId(String id) { this.id = id; }
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;

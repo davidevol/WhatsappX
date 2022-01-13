@@ -19,14 +19,15 @@ public class Permissao {
 
             List<String> listaPermissoes = new ArrayList<>();
 
-
-            //Através do for, verifica quais permissões foram liberadas
+            /*Percorre as permissões passadas,
+            verificando uma a uma
+            * se já tem a permissao liberada */
             for ( String permissao : permissoes ){
-                Boolean temPermissao = ContextCompat.checkSelfPermission(activity, permissao) == PackageManager.PERMISSION_GRANTED;
+                boolean temPermissao = ContextCompat.checkSelfPermission(activity, permissao) == PackageManager.PERMISSION_GRANTED;
                 if ( !temPermissao ) listaPermissoes.add(permissao);
             }
 
-            //Estando vazia, não é necessário solicitar permissão
+            /*Caso a lista esteja vazia, não é necessário solicitar permissão*/
             if ( listaPermissoes.isEmpty() ) return true;
             String[] novasPermissoes = new String[ listaPermissoes.size() ];
             listaPermissoes.toArray( novasPermissoes );

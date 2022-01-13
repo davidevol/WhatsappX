@@ -3,28 +3,35 @@ package com.davidev.whatsappx.config;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.jar.Manifest;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class ConfiguracaoFirebase {
 
-    private static DatabaseReference databaase;
+    private static DatabaseReference database;
     private static FirebaseAuth auth;
+    private static StorageReference storage;
 
-    //Retorna a instancia do FirebaseDatabase
+    //retorna a instancia do FirebaseDatabase
     public static DatabaseReference getFirebaseDatabase(){
-        if ( databaase == null ){
-            databaase = FirebaseDatabase.getInstance().getReference();
+        if ( database == null ){
+            database = FirebaseDatabase.getInstance().getReference();
         }
-        return databaase;
+        return database;
     }
 
-    //Retorna a instancia do FirebaseAuth
     public static FirebaseAuth getFirebaseAutenticacao(){
-        if ( auth == null ){
+        if( auth == null ){
             auth = FirebaseAuth.getInstance();
         }
         return auth;
+    }
+
+    public static StorageReference getFirebaseStorage(){
+        if( storage == null ){
+            storage = FirebaseStorage.getInstance().getReference();
+        }
+        return storage;
     }
 
 }
