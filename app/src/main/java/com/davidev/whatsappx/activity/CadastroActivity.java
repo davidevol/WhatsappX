@@ -1,21 +1,17 @@
 package com.davidev.whatsappx.activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.davidev.whatsappx.R;
 import com.davidev.whatsappx.config.ConfiguracaoFirebase;
 import com.davidev.whatsappx.helper.Base64Custom;
 import com.davidev.whatsappx.helper.UsuarioFirebase;
 import com.davidev.whatsappx.model.Usuario;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
@@ -67,7 +63,7 @@ public class CadastroActivity extends AppCompatActivity {
 
             }else {
 
-                String excecao = "";
+                String excecao;
                 try {
                     throw Objects.requireNonNull(task.getException());
                 }catch ( FirebaseAuthWeakPasswordException e){

@@ -55,12 +55,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:autofillHints="Campo de preenchimento de nome de usuário"
             android:ems="10"
+            android:hint="Campo de texto para preenchimento do seu nome de Usuario"
             android:inputType="textPersonName"
-            android:text="@string/nome_do_usuario"
-            android:autofillHints="Campo de preenchimento de nome de usuário" />
+            android:text="@string/nome_do_usuario" />
 
         <ImageView
+            android:id="@+id/imageAtualizarNome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"

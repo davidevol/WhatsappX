@@ -3,11 +3,8 @@ package com.davidev.whatsappx.helper;
 import android.net.Uri;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
-
 import com.davidev.whatsappx.config.ConfiguracaoFirebase;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.davidev.whatsappx.model.Usuario;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
@@ -23,6 +20,7 @@ public class UsuarioFirebase {
         String email = Objects.requireNonNull(usuario.getCurrentUser()).getEmail();
         //String identificadorUsuario = Base64Custom.codificarBase64( email );
 
+        assert email != null;
         return Base64Custom.codificarBase64( email );
 
     }
@@ -78,6 +76,23 @@ public class UsuarioFirebase {
         }
 
 
+    }
+
+    public static Usuario getDadosUsuarioLogado() {
+
+        FirebaseUser firebaseUser = getUsuarioAtual();
+
+        Usuario usuario = new Usuario();
+        usuario.setEmail(firebaseUser.getEmail());
+        usuario.setNome(firebaseUser.getDisplayName());
+
+        if (firebaseUser.getPhotoUrl() == null){
+            usuario.setFoto("");
+        }else {
+            usuario.setFoto( firebaseUser.getPhotoUrl().toString() );
+        }
+
+        return usuario;
     }
 
 }
