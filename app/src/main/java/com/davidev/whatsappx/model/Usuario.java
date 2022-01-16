@@ -49,8 +49,8 @@ public class Usuario implements Serializable {
 
         HashMap<String, Object> usuarioMap = new HashMap<>();
         usuarioMap.put("email", getEmail() );
-        usuarioMap.put("nome", getNome() );
-        usuarioMap.put("foto", getFoto() );
+        usuarioMap.put("nome", getNome()   );
+        usuarioMap.put("foto", getFoto()   );
 
         return usuarioMap;
 
