@@ -14,6 +14,7 @@ import java.util.Objects;
 
 public class UsuarioFirebase {
 
+    // Retorna o email convertido em Base64
     public static String getIdentificadorUsuario(){
 
         FirebaseAuth usuario = ConfiguracaoFirebase.getFirebaseAutenticacao();
@@ -51,10 +52,9 @@ public class UsuarioFirebase {
             e.printStackTrace();
             return false;
         }
-
-
     }
 
+    // Quando atualizar a foto, é enviado para o firebase.
     public static boolean atualizarFotoUsuario(Uri url){
 
         try {
@@ -74,10 +74,9 @@ public class UsuarioFirebase {
             e.printStackTrace();
             return false;
         }
-
-
     }
 
+    // Recupera dados do perfil logado no firebase
     public static Usuario getDadosUsuarioLogado() {
 
         FirebaseUser firebaseUser = getUsuarioAtual();

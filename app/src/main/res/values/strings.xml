@@ -8,14 +8,13 @@
     <string name="texto_login">Não tem uma conta? Fazer uma</string>
     <string name="botão_entrar">Entrar</string>
     <string name="descricao_cadastro">Homem acenando</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="menu_pesquisar">Pesquisar</string>
     <string name="menu_configuracoes">Configurações</string>
     <string name="menu_sair">Sair</string>
     <string name="cadastro_bemvindo">Bem vindo(a)!</string>
     <string name="config_nome_do_usuario">Nome do usuário</string>
-    <string name="config_aviso">Esse não é seu nome de usuário nem seu PIN. Esse nome será visivel para seus contatos do WhatsappX</string>
+    <string name="config_aviso">Esse não é seu nome de usuário nem sua senha. Esse nome será visivel para seus contatos do WhatsappX</string>
     <string name="nome_do_usuario">Nome do usuário</string>
-    <string name="cadastro_aviso">Esse não é o seu nome de usuário nem sua senha. Esse nome ficará visível para seus contatos do WhatsApp</string>
+
 </resources>

@@ -20,6 +20,15 @@
 
     <style name="Toolbar" parent="Theme.AppCompat.NoActionBar">
 
-        </style>
+    </style>
+
+    <style name="Theme.WhatsappX.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.WhatsappX.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.WhatsappX.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>
