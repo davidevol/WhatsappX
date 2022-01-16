@@ -34,7 +34,7 @@ public class ContatosFragment extends Fragment {
 
     private RecyclerView recyclerViewListaContatos;
     private ContatosAdapter adapter;
-    private ArrayList<Usuario> listaContatatos = new ArrayList<>();
+    private ArrayList<Usuario> listaContatos = new ArrayList<>();
     private DatabaseReference usuariosRef;
     private ValueEventListener valueEventListenerContatos;
     private FirebaseUser usuarioAtual;
@@ -60,7 +60,7 @@ public class ContatosFragment extends Fragment {
         usuarioAtual = UsuarioFirebase.getUsuarioAtual();
 
         // Adapter
-        adapter = new ContatosAdapter(listaContatatos, getActivity());
+        adapter = new ContatosAdapter(listaContatos, getActivity());
 
         // Configuração do recyclerview
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager( getActivity() );
@@ -77,7 +77,10 @@ public class ContatosFragment extends Fragment {
                             @Override
                             public void onItemClick(View view, int position) {
 
+                                Usuario usuarioSelecionado = listaContatos.get( position );
+
                                 Intent i = new Intent(getActivity(), ChatActivity.class);
+                                i.putExtra("chatContato", usuarioSelecionado);
 
                                 startActivity( i );
 
@@ -105,6 +108,7 @@ public class ContatosFragment extends Fragment {
         recuperarContatos();
     }
 
+    @Override
     public void onStop(){
         super.onStop();
         usuariosRef.removeEventListener( valueEventListenerContatos );
@@ -114,7 +118,6 @@ public class ContatosFragment extends Fragment {
     public void recuperarContatos(){
 
         valueEventListenerContatos = usuariosRef.addValueEventListener(new ValueEventListener() {
-            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
@@ -122,16 +125,16 @@ public class ContatosFragment extends Fragment {
 
                     Usuario usuario = dados.getValue( Usuario.class );
 
-
                     String emailUsuarioAtual = usuarioAtual.getEmail();
                     assert emailUsuarioAtual != null;
                     assert usuario != null;
                     if ( !emailUsuarioAtual.equals( usuario.getEmail() ) ){
-                        listaContatatos.add( usuario );
+                        listaContatos.add( usuario );
                     }
                 }
 
                 adapter.notifyDataSetChanged();
+
             }
 
             @Override

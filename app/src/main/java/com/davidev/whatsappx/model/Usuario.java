@@ -1,18 +1,16 @@
 package com.davidev.whatsappx.model;
 
-import com.bumptech.glide.signature.ObjectKey;
 import com.davidev.whatsappx.config.ConfiguracaoFirebase;
 import com.davidev.whatsappx.helper.UsuarioFirebase;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Exclude;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 
-public class Usuario {
+public class Usuario implements Serializable {
 
     private String id;
     private String nome;
