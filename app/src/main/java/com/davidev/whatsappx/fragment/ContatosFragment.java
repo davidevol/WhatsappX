@@ -40,35 +40,31 @@ public class ContatosFragment extends Fragment {
     private FirebaseUser usuarioAtual;
 
     public ContatosFragment() {
+        // Required empty public constructor
     }
 
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
+        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_contatos, container, false);
 
-        // Configurações iniciais
+        //Configurações iniciais
         recyclerViewListaContatos = view.findViewById(R.id.reciclerViewListaContatos);
         usuariosRef = ConfiguracaoFirebase.getFirebaseDatabase().child("usuarios");
         usuarioAtual = UsuarioFirebase.getUsuarioAtual();
 
-        // Adapter
-        adapter = new ContatosAdapter(listaContatos, getActivity());
+        //configurar adapter
+        adapter = new ContatosAdapter(listaContatos, getActivity() );
 
-        // Configuração do recyclerview
+        //configurar recyclerview
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager( getActivity() );
         recyclerViewListaContatos.setLayoutManager( layoutManager );
         recyclerViewListaContatos.setHasFixedSize( true );
-        recyclerViewListaContatos.setAdapter(adapter);
+        recyclerViewListaContatos.setAdapter( adapter );
 
-        // Configuração do evento de clique no recyclerview
+        //Configurar evento de clique no recyclerview
         recyclerViewListaContatos.addOnItemTouchListener(
                 new RecyclerItemClickListener(
                         getActivity(),
@@ -78,10 +74,8 @@ public class ContatosFragment extends Fragment {
                             public void onItemClick(View view, int position) {
 
                                 Usuario usuarioSelecionado = listaContatos.get( position );
-
                                 Intent i = new Intent(getActivity(), ChatActivity.class);
-                                i.putExtra("chatContato", usuarioSelecionado);
-
+                                i.putExtra("chatContato", usuarioSelecionado );
                                 startActivity( i );
 
                             }
@@ -99,29 +93,28 @@ public class ContatosFragment extends Fragment {
                 )
         );
 
-         return view;
+        return view;
     }
 
     @Override
-    public void onStart(){
+    public void onStart() {
         super.onStart();
         recuperarContatos();
     }
 
     @Override
-    public void onStop(){
+    public void onStop() {
         super.onStop();
         usuariosRef.removeEventListener( valueEventListenerContatos );
     }
 
-    // Adiciona ao adapter os valores novos quando não é o usuario atual, no banco de dados
     public void recuperarContatos(){
 
         valueEventListenerContatos = usuariosRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                for (DataSnapshot dados: snapshot.getChildren() ){
+                for ( DataSnapshot dados: dataSnapshot.getChildren() ){
 
                     Usuario usuario = dados.getValue( Usuario.class );
 
@@ -131,6 +124,8 @@ public class ContatosFragment extends Fragment {
                     if ( !emailUsuarioAtual.equals( usuario.getEmail() ) ){
                         listaContatos.add( usuario );
                     }
+
+
                 }
 
                 adapter.notifyDataSetChanged();
@@ -138,10 +133,11 @@ public class ContatosFragment extends Fragment {
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
+
     }
 
 }
