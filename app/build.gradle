@@ -43,10 +43,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     //Dependências do Glide
-    dependencies {
-        implementation 'com.github.bumptech.glide:glide:4.12.0'
-        annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
-    }
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
 
 
     //Dependências do Firebase

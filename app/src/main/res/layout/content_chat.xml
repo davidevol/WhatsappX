@@ -48,7 +48,7 @@
                 android:padding="5dp" />
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/imageCamera"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 app:srcCompat="@drawable/ic_photo_camera_24" />

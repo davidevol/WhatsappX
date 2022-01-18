@@ -1,5 +1,7 @@
 package com.davidev.whatsappx.model;
 
+import android.net.Uri;
+
 public class Mensagem {
 
     private String idUsuario;
