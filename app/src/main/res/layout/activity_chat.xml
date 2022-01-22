@@ -36,16 +36,10 @@
 
         </androidx.appcompat.widget.Toolbar>
 
-
-
-
     </com.google.android.material.appbar.AppBarLayout>
 
     <include
         android:id="@+id/include2"
         layout="@layout/content_chat" />
-
-
-
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

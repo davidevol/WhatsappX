@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -13,7 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -25,10 +23,9 @@ import com.davidev.whatsappx.adapter.MensagensAdapter;
 import com.davidev.whatsappx.config.ConfiguracaoFirebase;
 import com.davidev.whatsappx.helper.Base64Custom;
 import com.davidev.whatsappx.helper.UsuarioFirebase;
+import com.davidev.whatsappx.model.Conversa;
 import com.davidev.whatsappx.model.Mensagem;
 import com.davidev.whatsappx.model.Usuario;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -217,9 +214,27 @@ public class ChatActivity extends AppCompatActivity {
             //Salvar mensagem para o destinatario
             salvarMensagem(idUsuarioDestinatario, idUsuarioRemetente, mensagem);
 
+            //Salvar na abas conversa
+            salvarConversa(mensagem);
+
+        }else {
+            Toast.makeText(ChatActivity.this,
+                    "Digite uma mensagem para enviar!",
+                    Toast.LENGTH_LONG).show();
         }
     }
 
+    public void salvarConversa( Mensagem msg ){
+
+        Conversa  conversaRemetente = new Conversa();
+        conversaRemetente.setIdRemetente( idUsuarioRemetente );
+        conversaRemetente.setIdDestinatario( idUsuarioDestinatario );
+        conversaRemetente.setUltimaMensagem( msg.getMensagem() );
+        conversaRemetente.setUsuarioExibicao( usuarioDestinatario );
+
+        conversaRemetente.salvar();
+
+    }
 
     private void salvarMensagem(String idRemetente, String idDestinatario, Mensagem msg) {
 

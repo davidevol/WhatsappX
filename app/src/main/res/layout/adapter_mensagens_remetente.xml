@@ -17,15 +17,15 @@
 
         <ImageView
             android:id="@+id/imageMensagemFoto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="270dp"
+            android:layout_height="270dp"
             app:srcCompat="@drawable/padrao" />
 
         <TextView
             android:id="@+id/textMensagemTexto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hello World"
+            android:text="World"
             android:textSize="18sp" />
     </LinearLayout>
 

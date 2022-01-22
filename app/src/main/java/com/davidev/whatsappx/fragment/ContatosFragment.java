@@ -40,7 +40,7 @@ public class ContatosFragment extends Fragment {
     private FirebaseUser usuarioAtual;
 
     public ContatosFragment() {
-        // Required empty public constructor
+
     }
 
 
