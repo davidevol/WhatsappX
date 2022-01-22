@@ -64,7 +64,7 @@ public class ContatosFragment extends Fragment {
         recyclerViewListaContatos.setHasFixedSize( true );
         recyclerViewListaContatos.setAdapter( adapter );
 
-        //Configurar evento de clique no recyclerview
+        //Configurar evento de clique
         recyclerViewListaContatos.addOnItemTouchListener(
                 new RecyclerItemClickListener(
                         getActivity(),

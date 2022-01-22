@@ -59,6 +59,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:11.8.0'
     implementation 'com.firebaseui:firebase-ui-storage:0.6.0'
 
+    //Dependencias do menu de pesquisa
+    implementation 'com.miguelcatalan:materialsearchview:1.4.0'
+
 
     //Dependencias para abas
     //noinspection GradleDependency
