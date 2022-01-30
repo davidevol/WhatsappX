@@ -29,51 +29,51 @@ public class CadastroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
 
-        campoNome  = findViewById(R.id.editNome);
+        campoNome = findViewById(R.id.editNome);
         campoEmail = findViewById(R.id.editEmail);
         campoSenha = findViewById(R.id.editSenha);
 
     }
 
-    // Após validado, uma tarefa tenta executar o cadastro no FirebaseAuth.
-    public void cadastrarUsuario(final Usuario usuario){
+    // Gera uma tarefa que tenta executar o cadastro no FirebaseAuth.
+    public void cadastrarUsuario(final Usuario usuario) {
 
         autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
         autenticacao.createUserWithEmailAndPassword(
                 usuario.getEmail(), usuario.getSenha()
         ).addOnCompleteListener(this, task -> {
 
-            if ( task.isSuccessful() ){
+            if (task.isSuccessful()) {
 
                 Toast.makeText(CadastroActivity.this,
                         "Sucesso ao cadastrar usuário!",
                         Toast.LENGTH_SHORT).show();
-                UsuarioFirebase.atualizarNomeUsuario( usuario.getNome() );
+                UsuarioFirebase.atualizarNomeUsuario(usuario.getNome());
                 finish();
 
                 try {
 
-                    String identificadorUsuario = Base64Custom.codificarBase64( usuario.getEmail() );
-                    usuario.setId( identificadorUsuario );
+                    String identificadorUsuario = Base64Custom.codificarBase64(usuario.getEmail());
+                    usuario.setId(identificadorUsuario);
                     usuario.salvar();
 
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
-            }else {
+            } else {
 
                 String excecao;
                 try {
                     throw Objects.requireNonNull(task.getException());
-                }catch ( FirebaseAuthWeakPasswordException e){
-                    excecao = "Digite uma senha mais forte!";
-                }catch ( FirebaseAuthInvalidCredentialsException e){
-                    excecao = "Por favor, digite um e-mail válido";
-                }catch ( FirebaseAuthUserCollisionException e){
-                    excecao = "Este conta já foi cadastrada";
-                }catch (Exception e){
-                    excecao = "Erro ao cadastrar usuário: "  + e.getMessage();
+                } catch (FirebaseAuthWeakPasswordException e) {
+                    excecao = "Tente uma senha mais forte!";
+                } catch (FirebaseAuthInvalidCredentialsException e) {
+                    excecao = "Por favor, digite um e-mail adequado";
+                } catch (FirebaseAuthUserCollisionException e) {
+                    excecao = "Esta conta já foi cadastrada";
+                } catch (Exception e) {
+                    excecao = "Não foi possivel cadastrar por causa de: " + e.getMessage();
                     e.printStackTrace();
                 }
 
@@ -88,40 +88,39 @@ public class CadastroActivity extends AppCompatActivity {
     }
 
     // Valida se o usuario preencheu o formulario adequadamente para criar conta.
-    public void validarCadastroUsuario(View view){
+    public void validarCadastroUsuario(View view) {
 
         //Recuperar textos dos campos
-        String textoNome  = Objects.requireNonNull(campoNome.getText()).toString();
+        String textoNome = Objects.requireNonNull(campoNome.getText()).toString();
         String textoEmail = Objects.requireNonNull(campoEmail.getText()).toString();
         String textoSenha = Objects.requireNonNull(campoSenha.getText()).toString();
 
-        if( !textoNome.isEmpty() ){//verifica nome
-            if( !textoEmail.isEmpty() ){//verifica e-mail
-                if ( !textoSenha.isEmpty() ){
+        if (!textoNome.isEmpty()) {
+            if (!textoEmail.isEmpty()) {
+                if (!textoSenha.isEmpty()) {
 
                     Usuario usuario = new Usuario();
-                    usuario.setNome( textoNome );
-                    usuario.setEmail( textoEmail );
-                    usuario.setSenha( textoSenha );
+                    usuario.setNome(textoNome);
+                    usuario.setEmail(textoEmail);
+                    usuario.setSenha(textoSenha);
 
-                    cadastrarUsuario( usuario );
+                    cadastrarUsuario(usuario);
 
-                }else {
+                } else {
                     Toast.makeText(CadastroActivity.this,
-                            "Preencha a senha!",
+                            "Falta a senha!",
                             Toast.LENGTH_SHORT).show();
                 }
-            }else {
+            } else {
                 Toast.makeText(CadastroActivity.this,
-                        "Preencha o email!",
+                        "Falta o email!",
                         Toast.LENGTH_SHORT).show();
             }
-        }else {
+        } else {
             Toast.makeText(CadastroActivity.this,
-                    "Preencha o nome!",
+                    "Falta o nome!",
                     Toast.LENGTH_SHORT).show();
         }
 
     }
 }
-

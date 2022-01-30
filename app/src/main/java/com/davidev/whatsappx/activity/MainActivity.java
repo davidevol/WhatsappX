@@ -47,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
 
         searchView = findViewById(R.id.materialSearchPrincipal);
         Toolbar toolbar = findViewById(R.id.toolbarPrincipal);
-        toolbar.setTitle("WhatsappX");
-        setSupportActionBar( toolbar );
+        toolbar.setTitle("Whatalk");
+        setSupportActionBar(toolbar);
 
         //Configura abas
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
@@ -56,14 +56,16 @@ public class MainActivity extends AppCompatActivity {
                 FragmentPagerItems.with(this)
                         .add("Conversas", ConversasFragment.class)
                         .add("Contatos", ContatosFragment.class)
-                .create()
+                        .create()
         );
 
         ViewPager viewPager = findViewById(R.id.viewPager);
-        viewPager.setAdapter (adapter);
+        viewPager.setAdapter(adapter);
 
         SmartTabLayout viewPagerTab = findViewById(R.id.viewPagerTab);
-        viewPagerTab.setViewPager( viewPager );
+        viewPagerTab.setViewPager(viewPager);
+
+        // Configuração da pesquisa
 
         searchView = findViewById(R.id.materialSearchPrincipal);
 
@@ -94,11 +96,11 @@ public class MainActivity extends AppCompatActivity {
             public boolean onQueryTextChange(String newText) {
 
                 ConversasFragment fragment = (ConversasFragment) adapter.getPage(0);
-                if( newText != null && !newText.isEmpty() ) {
+                if (newText != null && !newText.isEmpty()) {
                     fragment.pesquisarConversas(newText.toLowerCase());
 
                 }
-                    return true;
+                return true;
 
             }
         });
@@ -106,7 +108,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //Infla o menu_main.xml dentro da activit_main.xml
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -119,11 +120,11 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    //Acesso ao menu
+    // Acesso ao menu
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-        switch ( item.getItemId() ){
+        switch (item.getItemId()) {
             case R.id.menuSair:
                 deslogarUsuario();
                 finish();
@@ -138,18 +139,19 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void abrirConfiguracoes(){
-        Intent intent = new Intent (MainActivity.this, ConfiguracoesActivity.class);
-        startActivity( intent );
-    }
-
-    //Tenta deslogar o usuario atual
-    public void deslogarUsuario(){
+    public void deslogarUsuario() {
 
         try {
             autenticacao.signOut();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
+
+    public void abrirConfiguracoes() {
+        Intent intent = new Intent(MainActivity.this, ConfiguracoesActivity.class);
+        startActivity(intent);
+    }
+
 }

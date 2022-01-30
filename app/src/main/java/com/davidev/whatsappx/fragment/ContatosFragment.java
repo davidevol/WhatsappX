@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 
 import com.davidev.whatsappx.R;
 import com.davidev.whatsappx.activity.ChatActivity;
+import com.davidev.whatsappx.activity.GrupoActivity;
 import com.davidev.whatsappx.adapter.ContatosAdapter;
 import com.davidev.whatsappx.config.ConfiguracaoFirebase;
 import com.davidev.whatsappx.helper.RecyclerItemClickListener;
@@ -40,7 +41,7 @@ public class ContatosFragment extends Fragment {
     private FirebaseUser usuarioAtual;
 
     public ContatosFragment() {
-
+        // Required empty public constructor
     }
 
 
@@ -51,7 +52,7 @@ public class ContatosFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_contatos, container, false);
 
         //Configurações iniciais
-        recyclerViewListaContatos = view.findViewById(R.id.reciclerViewListaContatos);
+        recyclerViewListaContatos = view.findViewById(R.id.recyclerViewListaContatos);
         usuariosRef = ConfiguracaoFirebase.getFirebaseDatabase().child("usuarios");
         usuarioAtual = UsuarioFirebase.getUsuarioAtual();
 
@@ -64,7 +65,7 @@ public class ContatosFragment extends Fragment {
         recyclerViewListaContatos.setHasFixedSize( true );
         recyclerViewListaContatos.setAdapter( adapter );
 
-        //Configurar evento de clique
+        //Configurar evento de clique no recyclerview
         recyclerViewListaContatos.addOnItemTouchListener(
                 new RecyclerItemClickListener(
                         getActivity(),
@@ -74,9 +75,19 @@ public class ContatosFragment extends Fragment {
                             public void onItemClick(View view, int position) {
 
                                 Usuario usuarioSelecionado = listaContatos.get( position );
-                                Intent i = new Intent(getActivity(), ChatActivity.class);
-                                i.putExtra("chatContato", usuarioSelecionado );
+                                boolean cabecalho = usuarioSelecionado.getEmail().isEmpty();
+
+                                Intent i;
+                                if( cabecalho ){
+
+                                    i = new Intent(getActivity(), GrupoActivity.class);
+
+                                }else {
+                                    i = new Intent(getActivity(), ChatActivity.class);
+                                    i.putExtra("chatContato", usuarioSelecionado );
+                                }
                                 startActivity( i );
+
 
                             }
 
@@ -92,6 +103,15 @@ public class ContatosFragment extends Fragment {
                         }
                 )
         );
+
+        //Define usuário com e-mail vazio
+
+        Usuario itemGrupo = new Usuario();
+        itemGrupo.setNome("Novo grupo");
+        itemGrupo.setEmail("");
+
+        listaContatos.add( itemGrupo );
+
 
         return view;
     }
@@ -119,8 +139,8 @@ public class ContatosFragment extends Fragment {
                     Usuario usuario = dados.getValue( Usuario.class );
 
                     String emailUsuarioAtual = usuarioAtual.getEmail();
-                    assert emailUsuarioAtual != null;
                     assert usuario != null;
+                    assert emailUsuarioAtual != null;
                     if ( !emailUsuarioAtual.equals( usuario.getEmail() ) ){
                         listaContatos.add( usuario );
                     }

@@ -35,24 +35,24 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    //Loga o usuario ou exibe o motivo da falha
-    public void logarUsuario(Usuario usuario){
+    // Loga o usuario ou exibe o motivo da falha
+    public void logarUsuario(Usuario usuario) {
         autenticacao.signInWithEmailAndPassword(
                 usuario.getEmail(), usuario.getSenha()
         ).addOnCompleteListener(task -> {
 
-            if ( task.isSuccessful() ){
+            if (task.isSuccessful()) {
                 abrirTelaPrincipal();
             } else {
 
                 String excecao;
                 try {
                     throw Objects.requireNonNull(task.getException());
-                }catch  (FirebaseAuthInvalidCredentialsException e) {
+                } catch (FirebaseAuthInvalidCredentialsException e) {
                     excecao = "E-mail e senha não correspondem!";
-                }catch  (FirebaseAuthInvalidUserException e) {
+                } catch (FirebaseAuthInvalidUserException e) {
                     excecao = "Usuário não está cadastrado!";
-                }catch  (Exception e) {
+                } catch (Exception e) {
                     excecao = "Erro ao logar usuário: " + e.getMessage();
                     e.printStackTrace();
                 }
@@ -62,22 +62,22 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    //Efetua o login
-    public void validarAutenticacaoUsuario(View view){
+    // Efetua o login
+    public void validarAutenticacaoUsuario(View view) {
 
-        //Recupera os textos dos campos
+        // Recupera os textos dos campos
         String textoEmail = Objects.requireNonNull(campoEmail.getText()).toString();
         String textoSenha = Objects.requireNonNull(campoSenha.getText()).toString();
 
-        //Checar se campos foram preenchidos
+        // Checa se campos foram preenchidos
         if (!textoEmail.isEmpty()) {//Checa se há email
             if (!textoSenha.isEmpty()) {//Checa se há senha
 
                 Usuario usuario = new Usuario();
-                usuario.setEmail( textoEmail );
-                usuario.setSenha( textoSenha );
+                usuario.setEmail(textoEmail);
+                usuario.setSenha(textoSenha);
 
-                logarUsuario( usuario );
+                logarUsuario(usuario);
 
             } else {
                 Toast.makeText(LoginActivity.this, "Faltou preencher a senha!", Toast.LENGTH_SHORT).show();
@@ -89,26 +89,26 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    //Mantem logado se haver login existente
+    // Mantem logado se haver login existente
     @Override
     protected void onStart() {
         super.onStart();
         FirebaseUser usuarioAtual = autenticacao.getCurrentUser();
-        if( usuarioAtual != null ){
+        if (usuarioAtual != null) {
             abrirTelaPrincipal();
         }
     }
 
-    //Abre a activity de cadastro
+    // Abre a activity de cadastro
     public void abrirTelaCadastro(View view) {
         Intent intent = new Intent(LoginActivity.this, CadastroActivity.class);
-        startActivity( intent );
+        startActivity(intent);
     }
 
-    //Abre a activity principal
+    // Abre a activity principal
     public void abrirTelaPrincipal() {
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-        startActivity( intent );
+        startActivity(intent);
     }
 
 }

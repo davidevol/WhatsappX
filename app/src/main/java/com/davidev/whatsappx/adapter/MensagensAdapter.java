@@ -22,8 +22,8 @@ public class MensagensAdapter extends RecyclerView.Adapter<MensagensAdapter.MyVi
 
     private List<Mensagem> mensagens;
     private Context context;
-    private static final int TIPO_REMETENTE     = 0;
-    private static final int TIPO_DESTINATARIO  = 1;
+    private static final int TIPO_REMETENTE = 0;
+    private static final int TIPO_DESTINATARIO = 1;
 
     public MensagensAdapter(List<Mensagem> lista, Context c) {
         this.mensagens = lista;
@@ -35,9 +35,9 @@ public class MensagensAdapter extends RecyclerView.Adapter<MensagensAdapter.MyVi
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View item = null;
-        if ( viewType == TIPO_REMETENTE ){
+        if (viewType == TIPO_REMETENTE) {
             item = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_mensagens_remetente, parent, false);
-        }else if( viewType == TIPO_DESTINATARIO ){
+        } else if (viewType == TIPO_DESTINATARIO) {
             item = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_mensagens_destinatario, parent, false);
         }
 
@@ -48,21 +48,21 @@ public class MensagensAdapter extends RecyclerView.Adapter<MensagensAdapter.MyVi
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        Mensagem mensagem = mensagens.get( position );
+        Mensagem mensagem = mensagens.get(position);
         String msg = mensagem.getMensagem();
         String imagem = mensagem.getImagem();
 
-        if ( imagem != null ){
-            Uri url = Uri.parse( imagem );
-            Glide.with(context).load(url).into( holder.imagem );
+        if (imagem != null) {
+            Uri url = Uri.parse(imagem);
+            Glide.with(context).load(url).into(holder.imagem);
 
-            //Esconder o texto
+            // Esconder o texto
             holder.mensagem.setVisibility(View.GONE);
 
-        }else {
-            holder.mensagem.setText( msg );
+        } else {
+            holder.mensagem.setText(msg);
 
-            //Esconder a imagem
+            // Esconder a imagem
             holder.imagem.setVisibility(View.GONE);
         }
 
@@ -77,11 +77,11 @@ public class MensagensAdapter extends RecyclerView.Adapter<MensagensAdapter.MyVi
     @Override
     public int getItemViewType(int position) {
 
-        Mensagem mensagem = mensagens.get( position );
+        Mensagem mensagem = mensagens.get(position);
 
         String idUsuario = UsuarioFirebase.getIdentificadorUsuario();
 
-        if ( idUsuario.equals( mensagem.getIdUsuario() ) ){
+        if (idUsuario.equals(mensagem.getIdUsuario())) {
             return TIPO_REMETENTE;
         }
 
@@ -98,7 +98,7 @@ public class MensagensAdapter extends RecyclerView.Adapter<MensagensAdapter.MyVi
             super(itemView);
 
             mensagem = itemView.findViewById(R.id.textMensagemTexto);
-            imagem   = itemView.findViewById(R.id.imageMensagemFoto);
+            imagem = itemView.findViewById(R.id.imageMensagemFoto);
 
         }
     }

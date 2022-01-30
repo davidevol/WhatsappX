@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.ChatActivity">
+    tools:context=".activity.CadastroGrupoActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -16,28 +16,19 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:popupTheme="@style/Theme.WhatsappX.PopupOverlay" >
-
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/circleImageFotoChat"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/padrao" />
-
-            <TextView
-                android:id="@+id/textViewNomeChat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingStart="16dp"
-                android:text="Usuario"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
-        </androidx.appcompat.widget.Toolbar>
+            app:popupTheme="@style/Theme.WhatsappX.PopupOverlay" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_chat" />
+    <include layout="@layout/content_cadastro_grupo" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabSalvarGrupo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="@dimen/fab_margin"
+        android:layout_marginBottom="16dp"
+        app:srcCompat="@drawable/ic_baseline_check_24" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

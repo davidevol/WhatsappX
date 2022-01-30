@@ -32,9 +32,9 @@ public class ContatosAdapter extends RecyclerView.Adapter<ContatosAdapter.MyView
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View itemLista = LayoutInflater.from(parent.getContext() ).inflate(R.layout.adapter_contatos, parent, false);
+        View itemLista = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_contatos, parent, false);
 
-        return new MyViewHolder( itemLista );
+        return new MyViewHolder(itemLista);
     }
 
     @Override
@@ -42,15 +42,22 @@ public class ContatosAdapter extends RecyclerView.Adapter<ContatosAdapter.MyView
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         Usuario usuario = contatos.get(position);
+        boolean cabecalho = usuario.getEmail().isEmpty();
 
-        holder.nome.setText( usuario.getNome() );
-        holder.email.setText( usuario.getEmail() );
+        holder.nome.setText(usuario.getNome());
+        holder.email.setText(usuario.getEmail());
 
-        if( usuario.getFoto() != null ){
-            Uri uri = Uri.parse( usuario.getFoto() );
-            Glide.with(context).load( uri ).into( holder.foto );
-        }else {
-            holder.foto.setImageResource( R.drawable.padrao );
+        if (usuario.getFoto() != null) {
+            Uri uri = Uri.parse(usuario.getFoto());
+            Glide.with(context).load(uri).into(holder.foto);
+        } else {
+            if (cabecalho) {
+                holder.foto.setImageResource(R.drawable.icone_grupo);
+                holder.email.setVisibility(View.GONE);
+            } else {
+                holder.foto.setImageResource(R.drawable.padrao);
+            }
+
         }
 
     }
@@ -60,12 +67,12 @@ public class ContatosAdapter extends RecyclerView.Adapter<ContatosAdapter.MyView
         return contatos.size();
     }
 
-    public  class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder {
 
         CircleImageView foto;
         TextView nome, email;
 
-        public  MyViewHolder(View itemView){
+        public MyViewHolder(View itemView) {
             super(itemView);
 
             foto = itemView.findViewById(R.id.imageViewFotoContato);

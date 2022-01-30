@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.davidev.whatsappx" >
+    package="com.davidev.whatsappx">
 
     <uses-feature
         android:name="android.hardare.camera2"
@@ -15,7 +15,18 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_launcher_background"
         android:supportsRtl="true"
-        android:theme="@style/Theme.WhatsappX" >
+        android:theme="@style/Theme.WhatsappX">
+        <activity
+            android:name=".activity.CadastroGrupoActivity"
+            android:exported="false"
+            android:label="@string/title_activity_cadastro_grupo"
+            android:parentActivityName=".activity.GrupoActivity"
+            android:theme="@style/Theme.WhatsappX.NoActionBar" />
+        <activity
+            android:name=".activity.GrupoActivity"
+            android:exported="false"
+            android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/Theme.WhatsappX.NoActionBar" />
         <activity
             android:name=".activity.ChatActivity"
             android:exported="false"
@@ -27,7 +38,7 @@
             android:parentActivityName=".activity.MainActivity" />
         <activity
             android:name=".activity.LoginActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -16,5 +16,18 @@
     <string name="config_nome_do_usuario">Nome do usuário</string>
     <string name="config_aviso">Esse não é seu nome de usuário nem sua senha. Esse nome será visivel para seus contatos do WhatsappX</string>
     <string name="nome_do_usuario">Nome do usuário</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_cadastro_grupo">CadastroGrupoActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
 </resources>
