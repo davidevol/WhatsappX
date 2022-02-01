@@ -20,12 +20,16 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ContatosAdapter extends RecyclerView.Adapter<ContatosAdapter.MyViewHolder> {
 
-    private List<Usuario> contatos;
-    private Context context;
+    private final List<Usuario> contatos;
+    private final Context context;
 
     public ContatosAdapter(List<Usuario> listaContatos, Context c) {
         this.contatos = listaContatos;
         this.context = c;
+    }
+
+    public List<Usuario> getContatos() {
+        return this.contatos;
     }
 
     @NonNull

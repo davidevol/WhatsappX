@@ -22,14 +22,17 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ConversasAdapter extends RecyclerView.Adapter<ConversasAdapter.MyViewHolder> {
 
-    private List<Conversa> conversas;
-    private Context context;
+    private final List<Conversa> conversas;
+    private final Context context;
 
     public ConversasAdapter(List<Conversa> lista, Context c) {
         this.conversas = lista;
         this.context = c;
     }
 
+    public List<Conversa> getConversas() {
+        return this.conversas;
+    }
 
     @NonNull
     @Override
@@ -58,13 +61,15 @@ public class ConversasAdapter extends RecyclerView.Adapter<ConversasAdapter.MyVi
 
         }else {
             Usuario usuario = conversa.getUsuarioExibicao();
-            holder.nome.setText( usuario.getNome() );
+            if (usuario != null) {
+                holder.nome.setText(usuario.getNome());
 
-            if ( usuario.getFoto() != null ){
-                Uri uri = Uri.parse( usuario.getFoto() );
-                Glide.with( context ).load( uri ).into( holder.foto );
-            }else {
-                holder.foto.setImageResource(R.drawable.padrao);
+                if (usuario.getFoto() != null) {
+                    Uri uri = Uri.parse(usuario.getFoto());
+                    Glide.with(context).load(uri).into(holder.foto);
+                } else {
+                    holder.foto.setImageResource(R.drawable.padrao);
+                }
             }
         }
 
@@ -72,6 +77,7 @@ public class ConversasAdapter extends RecyclerView.Adapter<ConversasAdapter.MyVi
 
 
     }
+
 
     @Override
     public int getItemCount() {
