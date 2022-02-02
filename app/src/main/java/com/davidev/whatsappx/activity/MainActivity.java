@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
 
         Toolbar toolbar = findViewById(R.id.toolbarPrincipal);
-        toolbar.setTitle("Whatalk");
+        toolbar.setTitle("WhatsappX");
         setSupportActionBar(toolbar);
 
         //Configura abas

@@ -107,7 +107,7 @@ public class ChatActivity extends AppCompatActivity {
                             .load(url)
                             .into(circleImageViewFoto);
                 } else {
-                    circleImageViewFoto.setImageResource(R.drawable.padrao);
+                    circleImageViewFoto.setImageResource(R.drawable.ic_profile_standart_);
                 }
 
 
@@ -123,7 +123,7 @@ public class ChatActivity extends AppCompatActivity {
                             .load(url)
                             .into(circleImageViewFoto);
                 } else {
-                    circleImageViewFoto.setImageResource(R.drawable.padrao);
+                    circleImageViewFoto.setImageResource(R.drawable.ic_profile_standart_);
                 }
 
                 //recuperar dados usuario destinatario

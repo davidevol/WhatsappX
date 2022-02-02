@@ -56,7 +56,7 @@ public class ConversasAdapter extends RecyclerView.Adapter<ConversasAdapter.MyVi
                 Uri uri = Uri.parse( grupo.getFoto() );
                 Glide.with( context ).load( uri ).into( holder.foto );
             }else {
-                holder.foto.setImageResource(R.drawable.padrao);
+                holder.foto.setImageResource(R.drawable.ic_profile_standart_);
             }
 
         }else {
@@ -68,7 +68,7 @@ public class ConversasAdapter extends RecyclerView.Adapter<ConversasAdapter.MyVi
                     Uri uri = Uri.parse(usuario.getFoto());
                     Glide.with(context).load(uri).into(holder.foto);
                 } else {
-                    holder.foto.setImageResource(R.drawable.padrao);
+                    holder.foto.setImageResource(R.drawable.ic_profile_standart_);
                 }
             }
         }

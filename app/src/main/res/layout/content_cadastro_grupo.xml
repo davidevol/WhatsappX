@@ -28,7 +28,7 @@
                 android:id="@+id/imageGrupo"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:src="@drawable/padrao" />
+                android:src="@drawable/ic_profile_standart_" />
 
             <EditText
                 android:id="@+id/editNomeGrupo"

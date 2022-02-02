@@ -59,7 +59,7 @@ public class ContatosAdapter extends RecyclerView.Adapter<ContatosAdapter.MyView
                 holder.foto.setImageResource(R.drawable.icone_grupo);
                 holder.email.setVisibility(View.GONE);
             } else {
-                holder.foto.setImageResource(R.drawable.padrao);
+                holder.foto.setImageResource(R.drawable.ic_profile_standart_);
             }
 
         }

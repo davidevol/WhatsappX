@@ -7,7 +7,6 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -24,7 +23,6 @@ import com.davidev.whatsappx.config.ConfiguracaoFirebase;
 import com.davidev.whatsappx.helper.Permissao;
 import com.davidev.whatsappx.helper.UsuarioFirebase;
 import com.davidev.whatsappx.model.Usuario;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -36,7 +34,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ConfiguracoesActivity extends AppCompatActivity {
 
-    private String[] permissoesNecessarias = new String[]{
+    private final String[] permissoesNecessarias = new String[]{
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.CAMERA
     };
@@ -85,7 +83,7 @@ public class ConfiguracoesActivity extends AppCompatActivity {
                     .load(url)
                     .into(circleImageViewPerfil);
         } else {
-            circleImageViewPerfil.setImageResource(R.drawable.padrao);
+            circleImageViewPerfil.setImageResource(R.drawable.ic_profile_standart_);
         }
 
         editPerfilNome.setText(usuario.getDisplayName());

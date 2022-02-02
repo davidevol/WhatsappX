@@ -2,14 +2,13 @@ package com.davidev.whatsappx.adapter;
 
 import android.content.Context;
 import android.net.Uri;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.davidev.whatsappx.R;
@@ -20,10 +19,10 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
-public class GrupoSelecionadoAdapter  extends RecyclerView.Adapter<GrupoSelecionadoAdapter.MyViewHolder> {
+public class GrupoSelecionadoAdapter extends RecyclerView.Adapter<GrupoSelecionadoAdapter.MyViewHolder> {
 
-    private List<Usuario> contatosSelecionados;
-    private Context context;
+    private final List<Usuario> contatosSelecionados;
+    private final Context context;
 
     public GrupoSelecionadoAdapter(List<Usuario> listaContatos, Context c) {
         this.contatosSelecionados = listaContatos;
@@ -33,7 +32,7 @@ public class GrupoSelecionadoAdapter  extends RecyclerView.Adapter<GrupoSelecion
     @NonNull
     @Override
     public GrupoSelecionadoAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemLista = LayoutInflater.from( parent.getContext() ).inflate(R.layout.adapter_grupo_selecionado, parent, false);
+        View itemLista = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_grupo_selecionado, parent, false);
         return new GrupoSelecionadoAdapter.MyViewHolder(itemLista);
     }
 
@@ -48,7 +47,7 @@ public class GrupoSelecionadoAdapter  extends RecyclerView.Adapter<GrupoSelecion
             Uri uri = Uri.parse( usuario.getFoto() );
             Glide.with( context ).load( uri ).into( holder.foto );
         }else {
-            holder.foto.setImageResource( R.drawable.padrao );
+            holder.foto.setImageResource(R.drawable.ic_profile_standart_);
         }
 
     }

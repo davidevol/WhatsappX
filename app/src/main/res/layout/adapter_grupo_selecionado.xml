@@ -16,7 +16,7 @@
             android:id="@+id/imageViewFotoMembroSelecionado"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/padrao" />
+            android:src="@drawable/ic_profile_standart_" />
 
         <TextView
             android:id="@+id/textNomeMembroSelecionado"

@@ -27,7 +27,7 @@
             android:id="@+id/imageMensagemFoto"
             android:layout_width="270dp"
             android:layout_height="270dp"
-            app:srcCompat="@drawable/padrao" />
+            app:srcCompat="@drawable/ic_profile_standart_" />
 
         <TextView
             android:id="@+id/textMensagemTexto"

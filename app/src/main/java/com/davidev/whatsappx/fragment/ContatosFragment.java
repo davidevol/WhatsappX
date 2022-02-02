@@ -170,7 +170,8 @@ public class ContatosFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                listaContatos.clear();
+                limparListaContatos();
+
 
                 for (DataSnapshot dados : dataSnapshot.getChildren()) {
 
