@@ -63,6 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/digite_nome"
+            android:textColorHint="#26A69A"
             android:textSize="20sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -85,6 +86,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/digite_email"
             android:inputType="textEmailAddress"
+            android:textColorHint="#26A69A"
             android:textSize="20sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -106,6 +108,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/digite_senha"
             android:inputType="textPassword"
+            android:textColorHint="#26A69A"
             android:textSize="20sp" />
     </com.google.android.material.textfield.TextInputLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
