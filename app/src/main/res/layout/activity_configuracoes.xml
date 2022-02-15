@@ -1,111 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
     android:background="@color/white"
-    tools:context=".activity.ConfiguracoesActivity">
+    tools:ignore="SpeakableTextPresentCheck">
 
-
-    <include
-        android:id="@+id/include"
-        layout="@layout/toolbar"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
+        tools:context=".activity.ConfiguracoesActivity">
 
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/circleImageViewFotoPerfil"
-        android:layout_width="230dp"
-        android:layout_height="230dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="64dp"
-        android:src="@drawable/ic_profile_standart_"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:background="@android:color/white"
-        android:orientation="horizontal"
-        android:paddingBottom="5dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingTop="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/circleImageViewFotoPerfil">
-
-        <EditText
-            android:id="@+id/editPerfilNome"
+        <include
+            android:id="@+id/include"
+            layout="@layout/toolbar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:autofillHints="Campo de preenchimento de nome de usuário"
-            android:ems="10"
-            android:hint="Campo de texto para preenchimento do seu nome de Usuario"
-            android:inputType="textPersonName"
-            android:text="@string/nome_do_usuario" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/imageAtualizarNome"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circleImageViewFotoPerfil"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="64dp"
+            android:src="@drawable/ic_profile_standart_"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:paddingLeft="16dp"
+            android:paddingTop="5dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="5dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/circleImageViewFotoPerfil">
+
+            <EditText
+                android:id="@+id/editPerfilNome"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:autofillHints="Campo de preenchimento de nome de usuário"
+                android:ems="10"
+                android:hint="Campo de texto para preenchimento do seu nome de Usuario"
+                android:inputType="textPersonName"
+                android:text="@string/nome_do_usuario" />
+
+            <ImageView
+                android:id="@+id/imageAtualizarNome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/ic_baseline_edit_24"
+                android:contentDescription="Um Lápis" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            android:text="@string/config_aviso"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+
+        <ImageButton
+            android:id="@+id/imageButtonCamera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/ic_baseline_edit_24"
-            android:contentDescription="Um Lápis" />
+            android:contentDescription="Icone de uma Camera"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="@+id/circleImageViewFotoPerfil"
+            app:layout_constraintTop_toBottomOf="@+id/circleImageViewFotoPerfil"
+            app:srcCompat="@drawable/ic_photo_camera_24" />
 
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:text="@string/config_aviso"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        <ImageButton
+            android:id="@+id/imageButtonGaleria"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="Icone de uma Galeria de Fotos"
+            android:minHeight="48dp"
+            app:layout_constraintStart_toStartOf="@+id/circleImageViewFotoPerfil"
+            app:layout_constraintTop_toBottomOf="@+id/circleImageViewFotoPerfil"
+            app:srcCompat="@drawable/ic_add_photo_alternate_24" />
 
 
-    <ImageButton
-        android:id="@+id/imageButtonCamera"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="@+id/circleImageViewFotoPerfil"
-        app:layout_constraintTop_toBottomOf="@+id/circleImageViewFotoPerfil"
-        app:srcCompat="@drawable/ic_photo_camera_24"
-        android:contentDescription="Icone de uma Camera" />
-
-    <ImageButton
-        android:id="@+id/imageButtonGaleria"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="@+id/circleImageViewFotoPerfil"
-        app:layout_constraintTop_toBottomOf="@+id/circleImageViewFotoPerfil"
-        app:srcCompat="@drawable/ic_add_photo_alternate_24"
-        android:contentDescription="Icone de uma Galeria de Fotos" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
-
-
+</ScrollView>

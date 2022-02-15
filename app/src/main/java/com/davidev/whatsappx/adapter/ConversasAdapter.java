@@ -36,13 +36,14 @@ public class ConversasAdapter extends RecyclerView.Adapter<ConversasAdapter.MyVi
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemLista = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_contatos, parent, false);
         return new MyViewHolder(itemLista);
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    // Recupera o email, nome e uri da foto
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         Conversa conversa = conversas.get( position );
         holder.ultimaMensagem.setText( conversa.getUltimaMensagem() );
@@ -50,17 +51,20 @@ public class ConversasAdapter extends RecyclerView.Adapter<ConversasAdapter.MyVi
         if ( conversa.getIsGroup().equals("true") ){
 
             Grupo grupo = conversa.getGrupo();
-            holder.nome.setText( grupo.getNome() );
+            holder.nome.setText(grupo.getNome());
 
-            if ( grupo.getFoto() != null ){
-                Uri uri = Uri.parse( grupo.getFoto() );
-                Glide.with( context ).load( uri ).into( holder.foto );
-            }else {
+            if (grupo.getFoto() != null) {
+                Uri uri = Uri.parse(grupo.getFoto());
+                Glide.with(context).load(uri).into(holder.foto);
+            } else {
                 holder.foto.setImageResource(R.drawable.ic_profile_standart_);
             }
 
+
+            // ele recupera apenas uma vez o nome do usuario
         }else {
             Usuario usuario = conversa.getUsuarioExibicao();
+
             if (usuario != null) {
                 holder.nome.setText(usuario.getNome());
 
@@ -72,9 +76,6 @@ public class ConversasAdapter extends RecyclerView.Adapter<ConversasAdapter.MyVi
                 }
             }
         }
-
-
-
 
     }
 
