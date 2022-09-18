@@ -11,7 +11,9 @@ import com.davidev.whatsappx.config.ConfiguracaoFirebase;
 import com.davidev.whatsappx.helper.Base64Custom;
 import com.davidev.whatsappx.helper.UsuarioFirebase;
 import com.davidev.whatsappx.model.Usuario;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
@@ -35,7 +37,30 @@ public class CadastroActivity extends AppCompatActivity {
 
     }
 
-    // Gera uma tarefa que tenta executar o cadastro no FirebaseAuth.
+    public void validarCadastroUsuario(View view) {
+
+        String Nome = Objects.requireNonNull(campoNome.getText()).toString();
+        String Email = Objects.requireNonNull(campoEmail.getText()).toString();
+        String Senha = Objects.requireNonNull(campoSenha.getText()).toString();
+        boolean ehValido = !Nome.isEmpty() && !Email.isEmpty() && !Senha.isEmpty();
+
+        if (ehValido) {
+            usuarioValido(Nome, Email, Senha);
+        } else {
+            Toast.makeText(CadastroActivity.this,
+                    R.string.cadastro_aviso_campos, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void usuarioValido(String textoNome, String textoEmail, String textoSenha) {
+        Usuario usuario = new Usuario();
+        usuario.setNome(textoNome);
+        usuario.setEmail(textoEmail);
+        usuario.setSenha(textoSenha);
+
+        cadastrarUsuario(usuario);
+    }
+
     public void cadastrarUsuario(final Usuario usuario) {
 
         autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
@@ -44,83 +69,49 @@ public class CadastroActivity extends AppCompatActivity {
         ).addOnCompleteListener(this, task -> {
 
             if (task.isSuccessful()) {
-
-                Toast.makeText(CadastroActivity.this,
-                        "Sucesso ao cadastrar usuário!",
-                        Toast.LENGTH_SHORT).show();
-                UsuarioFirebase.atualizarNomeUsuario(usuario.getNome());
-                finish();
-
+                sucessoCadastro(usuario);
                 try {
-
-                    String identificadorUsuario = Base64Custom.codificarBase64(usuario.getEmail());
-                    usuario.setId(identificadorUsuario);
-                    usuario.salvar();
-
+                    atribuirIdentificador(usuario);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
             } else {
-
-                String excecao;
-                try {
-                    throw Objects.requireNonNull(task.getException());
-                } catch (FirebaseAuthWeakPasswordException e) {
-                    excecao = "Tente uma senha mais forte!";
-                } catch (FirebaseAuthInvalidCredentialsException e) {
-                    excecao = "Por favor, digite um e-mail adequado";
-                } catch (FirebaseAuthUserCollisionException e) {
-                    excecao = "Esta conta já foi cadastrada";
-                } catch (Exception e) {
-                    excecao = "Não foi possivel cadastrar por causa de: " + e.getMessage();
-                    e.printStackTrace();
-                }
-
-                Toast.makeText(CadastroActivity.this,
-                        excecao,
-                        Toast.LENGTH_SHORT).show();
-
+                motivoFracassoCadastro(task);
             }
-
         });
-
     }
 
-    // Valida se o usuario preencheu o formulario adequadamente para criar conta.
-    public void validarCadastroUsuario(View view) {
+    private void sucessoCadastro(Usuario usuario) {
+        Toast.makeText(CadastroActivity.this,
+                R.string.cadastro_sucesso,
+                Toast.LENGTH_SHORT).show();
+        UsuarioFirebase.atualizarNomeUsuario(usuario.getNome());
+        finish();
+    }
 
-        //Recuperar textos dos campos
-        String textoNome = Objects.requireNonNull(campoNome.getText()).toString();
-        String textoEmail = Objects.requireNonNull(campoEmail.getText()).toString();
-        String textoSenha = Objects.requireNonNull(campoSenha.getText()).toString();
+    private void atribuirIdentificador(Usuario usuario) {
+        String identificadorUsuario = Base64Custom.codificarBase64(usuario.getEmail());
+        usuario.setId(identificadorUsuario);
+        usuario.salvar();
+    }
 
-        if (!textoNome.isEmpty()) {
-            if (!textoEmail.isEmpty()) {
-                if (!textoSenha.isEmpty()) {
-
-                    Usuario usuario = new Usuario();
-                    usuario.setNome(textoNome);
-                    usuario.setEmail(textoEmail);
-                    usuario.setSenha(textoSenha);
-
-                    cadastrarUsuario(usuario);
-
-                } else {
-                    Toast.makeText(CadastroActivity.this,
-                            "Falta a senha!",
-                            Toast.LENGTH_SHORT).show();
-                }
-            } else {
-                Toast.makeText(CadastroActivity.this,
-                        "Falta o email!",
-                        Toast.LENGTH_SHORT).show();
-            }
-        } else {
-            Toast.makeText(CadastroActivity.this,
-                    "Falta o nome!",
-                    Toast.LENGTH_SHORT).show();
+    private void motivoFracassoCadastro(Task<AuthResult> task) {
+        String excecao;
+        try {
+            throw Objects.requireNonNull(task.getException());
+        } catch (FirebaseAuthWeakPasswordException e) {
+            excecao = getString(R.string.cadastro_fracasso_senha_fraca);
+        } catch (FirebaseAuthInvalidCredentialsException e) {
+            excecao = getString(R.string.cadastro_fracasso_email);
+        } catch (FirebaseAuthUserCollisionException e) {
+            excecao = getString(R.string.cadastro_fracasso_conta_existente);
+        } catch (Exception e) {
+            excecao = getString(R.string.cadastro_fracasso) + e.getMessage();
+            e.printStackTrace();
         }
 
+        Toast.makeText(CadastroActivity.this,
+                excecao,
+                Toast.LENGTH_SHORT).show();
     }
 }

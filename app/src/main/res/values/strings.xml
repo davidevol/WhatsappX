@@ -26,8 +26,14 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-
+    <!-- Strings used for Sign -->
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="cadastro_aviso_campos">Por favor preencha todos os campos corretamente!</string>
+    <string name="cadastro_sucesso">Sucesso ao cadastrar usuário!</string>
+    <string name="cadastro_fracasso_senha_fraca">Tente uma senha mais forte!</string>
+    <string name="cadastro_fracasso_email">Por favor, digite um e-mail adequado</string>
+    <string name="cadastro_fracasso_conta_existente">Esta conta já foi cadastrada</string>
+    <string name="cadastro_fracasso">"Não foi possivel cadastrar por causa de: "</string>
 
 </resources>
